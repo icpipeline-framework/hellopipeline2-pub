@@ -89,7 +89,7 @@ init();
 // Autofills the <input> for the II Url to point to our hellopipeline2II.
 document.body.onload = () => {
   //const hellopipeline2II = "https://rdmx6-jaaaa-aaaaa-aaadq-cai.identity.dfinity.network/"
-  const hellopipeline2II = "http://localhost:8000/?canisterId=rwlgt-iiaaa-aaaaa-aaaaa-cai";
+  const hellopipeline2II = "http://localhost:9000/?canisterId=rwlgt-iiaaa-aaaaa-aaaaa-cai";
   document.getElementById("iiUrl").value = hellopipeline2II;
 };
 
