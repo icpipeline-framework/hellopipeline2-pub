@@ -29,6 +29,9 @@ const maxTimeToLiveEl = 0;
 
 let authClient;
 
+console.log ("window.location.hostname: ", window.location.hostname); 
+
+let hellopipeline2II = "https://"+window.location.hostname+":8090"
 // now we create the check for the page
 
 const init = async () => {
@@ -66,13 +69,13 @@ const init = async () => {
   signInBtn.onclick = async () => {
     if (BigInt(maxTimeToLiveEl) > BigInt(0)) {
       authClient.login({
-        identityProvider: iiUrlEl.value,
+        identityProvider:  hellopipeline2II,
         maxTimeToLive: BigInt(maxTimeToLiveEl),
         onSuccess: updateView
       })
     } else {
       authClient.login({
-        identityProvider: iiUrlEl.value,
+        identityProvider: hellopipeline2II,
         onSuccess: updateView
       });
     }
@@ -86,14 +89,22 @@ const init = async () => {
 
 init();
 
+
 // Autofills the <input> for the II Url to point to our hellopipeline2II.
 document.body.onload = () => {
   //const hellopipeline2II = "https://rdmx6-jaaaa-aaaaa-aaadq-cai.identity.dfinity.network/"
-  const hellopipeline2II = "http://localhost:9000/?canisterId=rwlgt-iiaaa-aaaaa-aaaaa-cai";
+  //const hellopipeline2II = "http://localhost:9000/?canisterId=rwlgt-iiaaa-aaaaa-aaaaa-cai";
+  
   document.getElementById("iiUrl").value = hellopipeline2II;
+  document.getElementById("iiUrlDisplay").innerText = hellopipeline2II;
+
 };
 
-
+changeIiUrl.onclick = async () => {
+  hellopipeline2II = document.getElementById("iiUrl").value
+  document.getElementById("iiUrl").value = hellopipeline2II;
+  document.getElementById("iiUrlDisplay").innerText = hellopipeline2II;
+};
 
 document.querySelector("form").addEventListener("submit", async (e) => {
   e.preventDefault();
