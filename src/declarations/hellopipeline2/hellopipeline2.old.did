@@ -1,0 +1,818 @@
+type Worker__1 = 
+ record {
+   category: text;
+   creatorId: int;
+   dateCreated: int;
+   description: text;
+   dfxReplicaType: text;
+   dnsName: text;
+   id: int;
+   iiEnabled: text;
+   lastDeploymentId: int;
+   lastTouch: int;
+   lastUpdated: int;
+   name: text;
+   privateIp: text;
+   publicIp: text;
+   status: text;
+   ttydHttpsCount: int;
+   ttydHttpsEnabled: text;
+   uniqueId: text;
+ };
+type Worker = 
+ record {
+   category: text;
+   creatorId: int;
+   dateCreated: int;
+   description: text;
+   dfxReplicaType: text;
+   dnsName: text;
+   id: int;
+   iiEnabled: text;
+   lastDeploymentId: int;
+   lastTouch: int;
+   lastUpdated: int;
+   name: text;
+   privateIp: text;
+   publicIp: text;
+   status: text;
+   ttydHttpsCount: int;
+   ttydHttpsEnabled: text;
+   uniqueId: text;
+ };
+type User__1 = 
+ record {
+   active: bool;
+   apiToken: text;
+   cellPhone: text;
+   creatorId: int;
+   dateCreated: int;
+   discordHandle: text;
+   email: text;
+   firstName: text;
+   gitHubHandle: text;
+   gitHubToken: text;
+   hashPass: text;
+   icpmCredits: nat;
+   id: int;
+   internetId: text;
+   lastName: text;
+   lastUpdated: int;
+   username: text;
+ };
+type UserPrincipal = 
+ record {
+   active: bool;
+   dateCreated: int;
+   lastUpdated: int;
+   principalType: text;
+   userId: int;
+   userPrincipal: principal;
+ };
+type User = 
+ record {
+   active: bool;
+   apiToken: text;
+   cellPhone: text;
+   creatorId: int;
+   dateCreated: int;
+   discordHandle: text;
+   email: text;
+   firstName: text;
+   gitHubHandle: text;
+   gitHubToken: text;
+   hashPass: text;
+   icpmCredits: nat;
+   id: int;
+   internetId: text;
+   lastName: text;
+   lastUpdated: int;
+   username: text;
+ };
+type UplinkResponseReplica = 
+ record {
+   canisterProfiles: vec Canister;
+   deploymentObject: Deployment;
+   environmentObject: Environment;
+   identityObject: Identity;
+   jobObject: Job;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+   workerObject: Worker__1;
+ };
+type UplinkResponseHoncho = 
+ record {
+   jobPackages: vec JobPackage;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+   workerObject: Worker__1;
+ };
+type TtydHttpsEnableDisableResponse = 
+ record {
+   jobObject: Job;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type Transaction = 
+ record {
+   created_at_time: TimeStamp;
+   memo: Memo;
+   operation: opt Operation;
+ };
+type Tokens = record {e8s: nat64;};
+type ToggleQCStatusMainResponse = 
+ record {
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type TimeStamp = record {timestamp_nanos: nat64;};
+type Replicator__1 = 
+ record {
+   category: text;
+   creatorId: int;
+   dateCreated: int;
+   description: text;
+   environmentId: int;
+   environmentSize: text;
+   gitHubToken: text;
+   icpmCreditsConsumed: nat;
+   icpmCreditsConsumedTotal: nat;
+   icpmUptimeTotal: nat;
+   icxProxyPass: text;
+   id: int;
+   lastCheckedTime: int;
+   lastUpdated: int;
+   name: text;
+   projectId: int;
+   repo: text;
+   repoBranch: text;
+   started: int;
+   status: text;
+   stopped: int;
+   ttydPass: text;
+   webpackPass: text;
+ };
+type ReplicatorStartStopLog = 
+ record {
+   dateCreated: int;
+   icpmCreditsConsumed: nat;
+   replicatorId: int;
+   started: int;
+   stopped: int;
+ };
+type Replicator = 
+ record {
+   category: text;
+   creatorId: int;
+   dateCreated: int;
+   description: text;
+   environmentId: int;
+   environmentSize: text;
+   gitHubToken: text;
+   icpmCreditsConsumed: nat;
+   icpmCreditsConsumedTotal: nat;
+   icpmUptimeTotal: nat;
+   icxProxyPass: text;
+   id: int;
+   lastCheckedTime: int;
+   lastUpdated: int;
+   name: text;
+   projectId: int;
+   repo: text;
+   repoBranch: text;
+   started: int;
+   status: text;
+   stopped: int;
+   ttydPass: text;
+   webpackPass: text;
+ };
+type ReplicaAccessResponse = 
+ record {
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type ReplicaAccessObject = 
+ record {
+   httpPassword443: text;
+   httpPassword65001: text;
+   httpPassword8001: text;
+ };
+type QueryBlocksResponse = 
+ record {
+   archived_blocks:
+    vec record {
+          callback: QueryArchiveFn;
+          length: nat64;
+          start: BlockIndex;
+        };
+   blocks: vec Block;
+   certificate: opt blob;
+   chain_length: nat64;
+   first_block_index: BlockIndex;
+ };
+type QueryArchiveResult = 
+ variant {
+   Err: QueryArchiveError;
+   Ok: BlockRange;
+ };
+type QueryArchiveFn = func (GetBlocksArgs) -> (QueryArchiveResult) query;
+type QueryArchiveError = 
+ variant {
+   BadFirstBlockIndex:
+    record {
+      first_valid_index: BlockIndex;
+      requested_index: BlockIndex;
+    };
+   Other: record {
+            error_code: nat64;
+            error_message: text;
+          };
+ };
+type Project__1 = 
+ record {
+   category: text;
+   creatorId: int;
+   dateCreated: int;
+   description: text;
+   dfxIdentities: vec int;
+   id: int;
+   lastUpdated: int;
+   name: text;
+   projectRepo: text;
+ };
+type Project = 
+ record {
+   category: text;
+   creatorId: int;
+   dateCreated: int;
+   description: text;
+   dfxIdentities: vec int;
+   id: int;
+   lastUpdated: int;
+   name: text;
+   projectRepo: text;
+ };
+type Operation = 
+ variant {
+   Burn: record {
+           amount: Tokens;
+           from: AccountIdentifier;
+         };
+   Mint: record {
+           amount: Tokens;
+           to: AccountIdentifier;
+         };
+   Transfer:
+    record {
+      amount: Tokens;
+      fee: Tokens;
+      from: AccountIdentifier;
+      to: AccountIdentifier;
+    };
+ };
+type Memo = nat64;
+type ManageUserResponse = 
+ record {
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+   userObject: User__1;
+ };
+type ManagePrincipalResponse = 
+ record {
+   listOfManagerPrincipals: vec principal;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type ManageIdentityResponse = 
+ record {
+   identityObject: Identity;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type ManageEnvironmentResponse = 
+ record {
+   environmentObject: Environment;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type ManageCanisterResponse = 
+ record {
+   canisterObject: Canister;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type ManageArchiveResponse = 
+ record {
+   archiveObject: Archive;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type LoginResponse = 
+ record {
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type LoginAttempt = 
+ record {
+   loginClient: text;
+   loginHash: text;
+   loginIp: text;
+   timestamp: int;
+ };
+type Job__1 = 
+ record {
+   creatorId: int;
+   dateCreated: int;
+   environmentId: int;
+   id: int;
+   jobType: text;
+   lastUpdated: int;
+   refId: int;
+   refType: text;
+   status: text;
+   workerId: int;
+ };
+type JobPackage = 
+ record {
+   jobObject: Job;
+   jobWorkerObject: Worker__1;
+   jobWorkerToken: ApiToken;
+   replicatorObject: Replicator;
+ };
+type Job = 
+ record {
+   creatorId: int;
+   dateCreated: int;
+   environmentId: int;
+   id: int;
+   jobType: text;
+   lastUpdated: int;
+   refId: int;
+   refType: text;
+   status: text;
+   workerId: int;
+ };
+type Identity__1 = 
+ record {
+   category: text;
+   creatorId: int;
+   dateCreated: int;
+   description: text;
+   id: int;
+   identityPem: text;
+   lastUpdated: int;
+   name: text;
+   "principal": text;
+   profileWalletId: text;
+ };
+type Identity = 
+ record {
+   category: text;
+   creatorId: int;
+   dateCreated: int;
+   description: text;
+   id: int;
+   identityPem: text;
+   lastUpdated: int;
+   name: text;
+   "principal": text;
+   profileWalletId: text;
+ };
+type ICPMCreditLineItem = 
+ record {
+   blockHeight: nat;
+   creatorId: int;
+   credits: nat;
+   dateCreated: int;
+   e8s: nat64;
+   environmentId: int;
+   id: int;
+   lastUpdated: int;
+   lineType: text;
+   projectId: int;
+   replicatorId: int;
+   userId: int;
+   workerId: int;
+ };
+type GetEventsResponse = 
+ record {
+   eventObjects: vec Event__1;
+   eventsCount: nat;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type GetBlocksArgs = 
+ record {
+   length: nat64;
+   start: BlockIndex;
+ };
+type Event__1 = 
+ record {
+   creatorId: int;
+   dateCreated: int;
+   deploymentId: int;
+   environmentId: int;
+   eventText: text;
+   eventType: text;
+   id: int;
+   jobId: int;
+   lastUpdated: int;
+   localTime: int;
+   mainRefType: text;
+   projectId: int;
+   workerId: int;
+ };
+type Event = 
+ record {
+   creatorId: int;
+   dateCreated: int;
+   deploymentId: int;
+   environmentId: int;
+   eventText: text;
+   eventType: text;
+   id: int;
+   jobId: int;
+   lastUpdated: int;
+   localTime: int;
+   mainRefType: text;
+   projectId: int;
+   workerId: int;
+ };
+type Environment__1 = 
+ record {
+   creatorId: int;
+   dateCreated: int;
+   deploymentNetwork: text;
+   description: text;
+   environmentType: text;
+   id: int;
+   identityId: int;
+   lastUpdated: int;
+   name: text;
+   projectId: int;
+   projectRepoBranch: text;
+   workerId: int;
+ };
+type Environment = 
+ record {
+   creatorId: int;
+   dateCreated: int;
+   deploymentNetwork: text;
+   description: text;
+   environmentType: text;
+   id: int;
+   identityId: int;
+   lastUpdated: int;
+   name: text;
+   projectId: int;
+   projectRepoBranch: text;
+   workerId: int;
+ };
+type DownloadAllLogResponse = 
+ record {
+   canisters: vec Canister;
+   deployments: vec Deployment;
+   events: vec Event__1;
+   jobs: vec Job;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type DownloadAllConfigResponse = 
+ record {
+   canisterProfiles: vec Canister;
+   environments: vec Environment;
+   identities: vec Identity;
+   msg: text;
+   projects: vec Project;
+   replicators: vec Replicator;
+   responseStatus: text;
+   timeStamp: int;
+   users: vec User__1;
+ };
+type Deployment__1 = 
+ record {
+   creatorId: int;
+   dateCreated: int;
+   deploymentNotes: text;
+   environmentId: int;
+   executeFinishTime: int;
+   executeStartTime: int;
+   id: int;
+   identityId: int;
+   lastUpdated: int;
+   projectId: int;
+   projectRepo: text;
+   projectRepoBranch: text;
+   status: text;
+ };
+type Deployment = 
+ record {
+   creatorId: int;
+   dateCreated: int;
+   deploymentNotes: text;
+   environmentId: int;
+   executeFinishTime: int;
+   executeStartTime: int;
+   id: int;
+   identityId: int;
+   lastUpdated: int;
+   projectId: int;
+   projectRepo: text;
+   projectRepoBranch: text;
+   status: text;
+ };
+type CreateIiEnableJobResponse = 
+ record {
+   jobObject: Job;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type CreateDeploymentResponse = 
+ record {
+   deploymentObject: Deployment;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type CompleteWorkerResponse = 
+ record {
+   environmentObject: Environment;
+   latestDeploymentObject: Deployment;
+   latestJobObject: Job;
+   msg: text;
+   projectObject: Project;
+   responseStatus: text;
+   timeStamp: int;
+   workerObject: Worker__1;
+ };
+type CompleteReplicatorResponse = 
+ record {
+   environmentObject: Environment;
+   lastDeploymentObject: Deployment;
+   msg: text;
+   projectObject: Project;
+   replicatorObject: Replicator;
+   responseStatus: text;
+   timeStamp: int;
+   workerObject: Worker__1;
+ };
+type CompleteProjectResponse = 
+ record {
+   environmentObjects: vec Environment;
+   msg: text;
+   projectObject: Project;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type CompleteJobResponse = 
+ record {
+   jobObject: Job;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type CompleteIdentityResponse = 
+ record {
+   environmentObjects: vec Environment;
+   identityObject: Identity;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type CompleteEnvironmentResponse = 
+ record {
+   canisterProfiles: vec Canister;
+   environmentObject: Environment;
+   identityObject: Identity;
+   latestDeploymentObject: Deployment;
+   msg: text;
+   projectObject: Project;
+   responseStatus: text;
+   timeStamp: int;
+   workerObject: Worker__1;
+ };
+type CompleteDeploymentResponse = 
+ record {
+   canisterObjects: vec Canister;
+   deploymentObject: Deployment;
+   environmentObject: Environment;
+   eventObjects: vec Event__1;
+   jobObject: Job;
+   msg: text;
+   projectObject: Project;
+   replicatorObject: Replicator;
+   responseStatus: text;
+   timeStamp: int;
+   workerObject: Worker__1;
+ };
+type CompleteDashboardStats = 
+ record {
+   deploymentsCount: nat;
+   deploymentsCountLastDay: nat;
+   environmentsActive: nat;
+   environmentsCount: nat;
+   eventsCount: nat;
+   eventsCountLast30: nat;
+   msg: text;
+   projectsActive: nat;
+   projectsCount: nat;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type CompleteCanisterResponse = 
+ record {
+   canisterObject: Canister;
+   lastDeploymentObject: Deployment;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type Canister__1 = 
+ record {
+   canisterId: text;
+   canisterName: text;
+   canisterNetwork: text;
+   canisterType: text;
+   category: text;
+   creatorId: int;
+   dateCreated: int;
+   description: text;
+   dfxJson: text;
+   environmentId: int;
+   id: int;
+   identityId: int;
+   lastDeploymentId: int;
+   lastUpdated: int;
+   name: text;
+   projectId: int;
+ };
+type CanisterStatusResponse = 
+ record {
+   everLoggedIn: text;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+   uptime: int;
+ };
+type Canister = 
+ record {
+   canisterId: text;
+   canisterName: text;
+   canisterNetwork: text;
+   canisterType: text;
+   category: text;
+   creatorId: int;
+   dateCreated: int;
+   description: text;
+   dfxJson: text;
+   environmentId: int;
+   id: int;
+   identityId: int;
+   lastDeploymentId: int;
+   lastUpdated: int;
+   name: text;
+   projectId: int;
+ };
+type BlockRange = record {blocks: vec Block;};
+type BlockIndex = nat64;
+type Block = 
+ record {
+   parent_hash: opt blob;
+   timestamp: TimeStamp;
+   transaction: Transaction;
+ };
+type ArchiveShortsListResponse = 
+ record {
+   archiveShortObjects: vec ArchiveShort;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type ArchiveShort = 
+ record {
+   archiveMsg: text;
+   archiveType: text;
+   id: int;
+   timeStamp: int;
+ };
+type ArchiveICPM = 
+ record {
+   canisterObjects: vec Canister;
+   environmentObjects: vec Environment;
+   identityObjects: vec Identity;
+   projectObjects: vec Project;
+   replicatorObjects: vec Replicator;
+   userObjects: vec User__1;
+   workerObjects: vec Worker__1;
+ };
+type Archive = 
+ record {
+   archiveMsg: text;
+   archiveObject: ArchiveICPM;
+   archiveType: text;
+   id: int;
+   timeStamp: int;
+ };
+type ApiToken__1 = 
+ record {
+   active: bool;
+   apiToken: text;
+   creatorId: int;
+   dateCreated: int;
+   id: int;
+   lastUpdated: int;
+   refId: int;
+   refType: text;
+ };
+type ApiToken = 
+ record {
+   active: bool;
+   apiToken: text;
+   creatorId: int;
+   dateCreated: int;
+   id: int;
+   lastUpdated: int;
+   refId: int;
+   refType: text;
+ };
+type AccountIdentifier = blob;
+service : {
+  addManagerPrincipalMain: (text, text, principal) -> (LoginResponse);
+  addPurchasedCreditsMain: (text, int, nat, nat) -> (ManageUserResponse);
+  authenticateMain: (LoginAttempt, text) -> (LoginResponse);
+  checkPrincipalMain: () -> (ManageUserResponse) query;
+  createDeploymentMain: (text, Environment__1) -> (CreateDeploymentResponse);
+  createIiEnableJob: (text, int) -> (CreateIiEnableJobResponse);
+  doArchiveConfigMain: (text) -> (ManageArchiveResponse);
+  getApiTokensMain: () -> (vec ApiToken__1) query;
+  getArchiveByIdMain: (text, text, int) -> (ManageArchiveResponse);
+  getArchivesListMain: (text, text) -> (ArchiveShortsListResponse);
+  getBlockFromLedgerMain: (text, nat64) -> (QueryBlocksResponse);
+  getCanisterStatus: () -> (CanisterStatusResponse) query;
+  getCompleteCanisterMain: (text, int) -> (CompleteCanisterResponse) query;
+  getCompleteDashboardStats: (text) -> (CompleteDashboardStats) query;
+  getCompleteDeploymentMain: (text, int) ->
+   (CompleteDeploymentResponse) query;
+  getCompleteEnvironmentMain: (text, int) ->
+   (CompleteEnvironmentResponse) query;
+  getCompleteIdentityMain: (text, int) -> (CompleteIdentityResponse) query;
+  getCompleteJobMain: (text, int) -> (CompleteJobResponse) query;
+  getCompleteProjectMain: (text, int) -> (CompleteProjectResponse) query;
+  getCompleteReplicatorMain: (text, int) ->
+   (CompleteReplicatorResponse) query;
+  getCompleteWorkerMain: (text, int) -> (CompleteWorkerResponse) query;
+  getICPMConfigDownload: (text, text) -> (DownloadAllConfigResponse);
+  getICPMLedger: () -> (vec ICPMCreditLineItem) query;
+  getICPMLedgerByUserMain: (text, int, int) -> (vec ICPMCreditLineItem) query;
+  getICPMLogDownload: (text, text) -> (DownloadAllLogResponse);
+  getListOfCanisters: (text, text) -> (vec Canister__1) query;
+  getListOfDeployments: (text, text) -> (vec Deployment__1) query;
+  getListOfEnvironments: (text, text) -> (vec Environment__1) query;
+  getListOfEventsMain: (text, text, int, int) -> (GetEventsResponse) query;
+  getListOfIdentities: (text, text) -> (vec Identity__1) query;
+  getListOfJobs: (text, text) -> (vec Job__1) query;
+  getListOfProjects: (text, text) -> (vec Project__1) query;
+  getListOfReplicatorStartStopLogs: (text, int) ->
+   (vec ReplicatorStartStopLog) query;
+  getListOfReplicators: (text, text) -> (vec Replicator__1) query;
+  getListOfUsers: (text, text) -> (vec User) query;
+  getListOfWorkers: (text, text) -> (vec Worker) query;
+  getUserMain: (text, int) -> (ManageUserResponse) query;
+  getUserPrincipalsMain: () -> (vec UserPrincipal) query;
+  manageArchiveCanisterIdMain: (text, text, text, text) ->
+   (ManageArchiveResponse);
+  manageCanisterMain: (text, Canister__1) -> (ManageCanisterResponse);
+  manageDeploymentMain: (text, Deployment__1) -> (text);
+  manageEnvironmentMain: (text, Environment__1) ->
+   (ManageEnvironmentResponse);
+  manageEventMain: (text, Event) -> (text);
+  manageIdentityMain: (text, Identity__1) -> (ManageIdentityResponse);
+  manageJobMain: (text, Job__1) -> (text);
+  managePrincipalsMain: (text, text, text) -> (ManagePrincipalResponse);
+  manageProjectMain: (text, Project__1) -> (CompleteProjectResponse);
+  manageReplicatorMain: (text, Replicator__1) -> (CompleteReplicatorResponse);
+  manageUserCreditsManagerMain: (text, int, nat) -> (ManageUserResponse);
+  manageUserMain: (text, User) -> (ManageUserResponse);
+  manageWorkerMain: (text, Worker) -> (CompleteWorkerResponse);
+  toggleQCStatusMain: (text, int) -> (ToggleQCStatusMainResponse);
+  ttydHttpsEnableDisable: (text, int) -> (TtydHttpsEnableDisableResponse);
+  updateReplicatorAccessMain: (text, Worker, ReplicaAccessObject) ->
+   (ReplicaAccessResponse);
+  workerUplinkHoncho: (text, Worker) -> (UplinkResponseHoncho);
+  workerUplinkReplica: (text, Worker) -> (UplinkResponseReplica);
+}

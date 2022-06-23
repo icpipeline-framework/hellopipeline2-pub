@@ -1,0 +1,265 @@
+// Version: 1.0.0
+type ApiToken =
+  {
+    active : Bool;
+    apiToken : Text;
+    creatorId : Int;
+    dateCreated : Int;
+    id : Int;
+    lastUpdated : Int;
+    refId : Int;
+    refType : Text
+  };
+type ApiToken__2 = ApiToken;
+type Canister =
+  {
+    canisterId : Text;
+    canisterName : Text;
+    canisterNetwork : Text;
+    canisterType : Text;
+    category : Text;
+    creatorId : Int;
+    dateCreated : Int;
+    description : Text;
+    dfxJson : Text;
+    environmentId : Int;
+    id : Int;
+    identityId : Int;
+    lastDeploymentId : Int;
+    lastUpdated : Int;
+    name : Text;
+    projectId : Int
+  };
+type Canister__2 = Canister;
+type Deployment =
+  {
+    creatorId : Int;
+    dateCreated : Int;
+    deploymentNotes : Text;
+    environmentId : Int;
+    executeFinishTime : Int;
+    executeStartTime : Int;
+    id : Int;
+    identityId : Int;
+    lastUpdated : Int;
+    projectId : Int;
+    projectRepo : Text;
+    projectRepoBranch : Text;
+    status : Text
+  };
+type Deployment__2 = Deployment;
+type Environment =
+  {
+    creatorId : Int;
+    dateCreated : Int;
+    deploymentNetwork : Text;
+    description : Text;
+    environmentType : Text;
+    id : Int;
+    identityId : Int;
+    lastUpdated : Int;
+    name : Text;
+    projectId : Int;
+    projectRepoBranch : Text;
+    workerId : Int
+  };
+type Environment__4 = Environment;
+type Event =
+  {
+    creatorId : Int;
+    dateCreated : Int;
+    deploymentId : Int;
+    environmentId : Int;
+    eventText : Text;
+    eventType : Text;
+    id : Int;
+    jobId : Int;
+    lastUpdated : Int;
+    localTime : Int;
+    mainRefType : Text;
+    projectId : Int;
+    workerId : Int
+  };
+type Event__2 = Event;
+type ICPMCreditLineItem =
+  {
+    blockHeight : Nat;
+    creatorId : Int;
+    credits : Nat;
+    dateCreated : Int;
+    e8s : Nat64;
+    environmentId : Int;
+    id : Int;
+    lastUpdated : Int;
+    lineType : Text;
+    projectId : Int;
+    replicatorId : Int;
+    userId : Int;
+    workerId : Int
+  };
+type ICPMCreditLineItem__3 = ICPMCreditLineItem;
+type Identity =
+  {
+    category : Text;
+    creatorId : Int;
+    dateCreated : Int;
+    description : Text;
+    id : Int;
+    identityPem : Text;
+    lastUpdated : Int;
+    name : Text;
+    principal : Text;
+    profileWalletId : Text
+  };
+type Identity__2 = Identity;
+type Job =
+  {
+    creatorId : Int;
+    dateCreated : Int;
+    environmentId : Int;
+    id : Int;
+    jobType : Text;
+    lastUpdated : Int;
+    refId : Int;
+    refType : Text;
+    status : Text;
+    workerId : Int
+  };
+type Job__3 = Job;
+type LoginAttempt =
+  {loginClient : Text; loginHash : Text; loginIp : Text; timestamp : Int};
+type LoginAttempt__1 = LoginAttempt;
+type Project =
+  {
+    category : Text;
+    creatorId : Int;
+    dateCreated : Int;
+    description : Text;
+    dfxIdentities : [Int];
+    id : Int;
+    lastUpdated : Int;
+    name : Text;
+    projectRepo : Text
+  };
+type Project__2 = Project;
+type Replicator =
+  {
+    category : Text;
+    creatorId : Int;
+    dateCreated : Int;
+    description : Text;
+    environmentId : Int;
+    environmentSize : Text;
+    gitHubToken : Text;
+    icpmCreditsConsumed : Nat;
+    icpmCreditsConsumedTotal : Nat;
+    icpmUptimeTotal : Nat;
+    icxProxyPass : Text;
+    id : Int;
+    lastCheckedTime : Int;
+    lastUpdated : Int;
+    name : Text;
+    projectId : Int;
+    repo : Text;
+    repoBranch : Text;
+    started : Int;
+    status : Text;
+    stopped : Int;
+    ttydPass : Text;
+    webpackPass : Text
+  };
+type ReplicatorStartStopLog =
+  {
+    dateCreated : Int;
+    icpmCreditsConsumed : Nat;
+    replicatorId : Int;
+    started : Int;
+    stopped : Int
+  };
+type ReplicatorStartStopLog__2 = ReplicatorStartStopLog;
+type Replicator__2 = Replicator;
+type User =
+  {
+    active : Bool;
+    apiToken : Text;
+    cellPhone : Text;
+    creatorId : Int;
+    dateCreated : Int;
+    discordHandle : Text;
+    email : Text;
+    firstName : Text;
+    gitHubHandle : Text;
+    gitHubToken : Text;
+    hashPass : Text;
+    icpmCredits : Nat;
+    id : Int;
+    internetId : Text;
+    lastName : Text;
+    lastUpdated : Int;
+    username : Text
+  };
+type UserPrincipal =
+  {
+    active : Bool;
+    dateCreated : Int;
+    lastUpdated : Int;
+    principalType : Text;
+    userId : Int;
+    userPrincipal : Principal
+  };
+type UserPrincipal__3 = UserPrincipal;
+type User__2 = User;
+type Worker =
+  {
+    category : Text;
+    creatorId : Int;
+    dateCreated : Int;
+    description : Text;
+    dfxReplicaType : Text;
+    dnsName : Text;
+    id : Int;
+    iiEnabled : Text;
+    lastDeploymentId : Int;
+    lastTouch : Int;
+    lastUpdated : Int;
+    name : Text;
+    privateIp : Text;
+    publicIp : Text;
+    status : Text;
+    ttydHttpsCount : Int;
+    ttydHttpsEnabled : Text;
+    uniqueId : Text
+  };
+type Worker__3 = Worker;
+actor {
+  stable var archiveCanisterId : Text;
+  stable var archiveCanisterToken : Text;
+  stable var everLoggedIn : Text;
+  stable var nextApiTokenId : Nat;
+  stable var nextCanisterId : Nat;
+  stable var nextDeploymentId : Nat;
+  stable var nextEnvironmentId : Nat;
+  stable var nextEventId : Nat;
+  stable var nextIdentityId : Nat;
+  stable var nextJobId : Nat;
+  stable var nextLedgerId : Nat;
+  stable var nextProjectId : Nat;
+  stable var nextReplicatorId : Nat;
+  stable var nextUserId : Nat;
+  stable var nextWorkerId : Nat;
+  stable var theApiTokens : [ApiToken__2];
+  stable var theCanisters : [Canister__2];
+  stable var theDeployments : [Deployment__2];
+  stable var theEnvironments : [Environment__4];
+  stable var theEvents : [Event__2];
+  stable var theICPMCreditLedger : [ICPMCreditLineItem__3];
+  stable var theIdentities : [Identity__2];
+  stable var theJobs : [Job__3];
+  stable var theLoginAttempts : [LoginAttempt__1];
+  stable var theProjects : [Project__2];
+  stable var theReplicatorStartStopLogs : [ReplicatorStartStopLog__2];
+  stable var theReplicators : [Replicator__2];
+  stable var theUserPrincipals : [UserPrincipal__3];
+  stable var theUsers : [User__2];
+  stable var theWorkers : [Worker__3]
+};

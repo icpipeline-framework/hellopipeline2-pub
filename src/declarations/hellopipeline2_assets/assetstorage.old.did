@@ -1,0 +1,172 @@
+type Worker = 
+ record {
+   category: text;
+   creatorId: int;
+   dateCreated: int;
+   description: text;
+   dfxReplicaType: text;
+   dnsName: text;
+   id: int;
+   iiEnabled: text;
+   lastDeploymentId: int;
+   lastTouch: int;
+   lastUpdated: int;
+   name: text;
+   privateIp: text;
+   publicIp: text;
+   status: text;
+   ttydHttpsCount: int;
+   ttydHttpsEnabled: text;
+   uniqueId: text;
+ };
+type User = 
+ record {
+   active: bool;
+   apiToken: text;
+   cellPhone: text;
+   creatorId: int;
+   dateCreated: int;
+   discordHandle: text;
+   email: text;
+   firstName: text;
+   gitHubHandle: text;
+   gitHubToken: text;
+   hashPass: text;
+   icpmCredits: nat;
+   id: int;
+   internetId: text;
+   lastName: text;
+   lastUpdated: int;
+   username: text;
+ };
+type Replicator = 
+ record {
+   category: text;
+   creatorId: int;
+   dateCreated: int;
+   description: text;
+   environmentId: int;
+   environmentSize: text;
+   gitHubToken: text;
+   icpmCreditsConsumed: nat;
+   icpmCreditsConsumedTotal: nat;
+   icpmUptimeTotal: nat;
+   icxProxyPass: text;
+   id: int;
+   lastCheckedTime: int;
+   lastUpdated: int;
+   name: text;
+   projectId: int;
+   repo: text;
+   repoBranch: text;
+   started: int;
+   status: text;
+   stopped: int;
+   ttydPass: text;
+   webpackPass: text;
+ };
+type Project = 
+ record {
+   category: text;
+   creatorId: int;
+   dateCreated: int;
+   description: text;
+   dfxIdentities: vec int;
+   id: int;
+   lastUpdated: int;
+   name: text;
+   projectRepo: text;
+ };
+type ManageArchiveResponse = 
+ record {
+   archiveObject: Archive__1;
+   msg: text;
+   responseStatus: text;
+   timeStamp: int;
+ };
+type Identity = 
+ record {
+   category: text;
+   creatorId: int;
+   dateCreated: int;
+   description: text;
+   id: int;
+   identityPem: text;
+   lastUpdated: int;
+   name: text;
+   "principal": text;
+   profileWalletId: text;
+ };
+type Environment = 
+ record {
+   creatorId: int;
+   dateCreated: int;
+   deploymentNetwork: text;
+   description: text;
+   environmentType: text;
+   id: int;
+   identityId: int;
+   lastUpdated: int;
+   name: text;
+   projectId: int;
+   projectRepoBranch: text;
+   workerId: int;
+ };
+type Canister = 
+ record {
+   canisterId: text;
+   canisterName: text;
+   canisterNetwork: text;
+   canisterType: text;
+   category: text;
+   creatorId: int;
+   dateCreated: int;
+   description: text;
+   dfxJson: text;
+   environmentId: int;
+   id: int;
+   identityId: int;
+   lastDeploymentId: int;
+   lastUpdated: int;
+   name: text;
+   projectId: int;
+ };
+type Archive__1 = 
+ record {
+   archiveMsg: text;
+   archiveObject: ArchiveICPM;
+   archiveType: text;
+   id: int;
+   timeStamp: int;
+ };
+type ArchiveShort = 
+ record {
+   archiveMsg: text;
+   archiveType: text;
+   id: int;
+   timeStamp: int;
+ };
+type ArchiveICPM = 
+ record {
+   canisterObjects: vec Canister;
+   environmentObjects: vec Environment;
+   identityObjects: vec Identity;
+   projectObjects: vec Project;
+   replicatorObjects: vec Replicator;
+   userObjects: vec User;
+   workerObjects: vec Worker;
+ };
+type Archive = 
+ record {
+   archiveMsg: text;
+   archiveObject: ArchiveICPM;
+   archiveType: text;
+   id: int;
+   timeStamp: int;
+ };
+service : {
+  getArchiveByIdMain: (text, int) -> (Archive) query;
+  getArchivesListMain: (text) -> (vec ArchiveShort) query;
+  getArchivesMain: (text) -> (vec Archive) query;
+  manageArchiveMain: (text, Archive) -> (ManageArchiveResponse);
+}
